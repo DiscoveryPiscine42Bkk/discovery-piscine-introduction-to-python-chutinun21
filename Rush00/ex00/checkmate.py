@@ -1,20 +1,20 @@
 def checkmate(board_str):
     try:
-        board = [list(row) for row in board_str.strip().splitlines()]
+        board = [list(row) for row in board_str.strip().splitlines()] #เช็คบอร์ด
         size = len(board)
 
         if any(len(row) != size for row in board):
             print("Error")
             return
 
-        directions = {
+        directions = { #หมากเดิน
             'R': [(-1, 0), (1, 0), (0, -1), (0, 1)], #rook
             'B': [(-1, -1), (-1, 1), (1, -1), (1, 1)],#bishop
             'Q': [(-1, 0), (1, 0), (0, -1), (0, 1), #queen
                   (-1, -1), (-1, 1), (1, -1), (1, 1)],
         }
 
-        king_pos = None
+        king_pos = None #king pos
         for i in range(size):
             for j in range(size):
                 if board[i][j] == 'K':
@@ -27,7 +27,7 @@ def checkmate(board_str):
             print("Error")
             return
 
-        for x in range(size):
+        for x in range(size): #ใช้เช็คว่าkingโดน check หรือไม่
             for y in range(size):
                 piece = board[x][y]
 
